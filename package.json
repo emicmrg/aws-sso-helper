@@ -4,6 +4,7 @@
   "description": "Simplifica el inicio de sesión y la gestión de perfiles de AWS SSO, abriendo shells con AWS_PROFILE inyectado.",
   "version": "0.1.0",
   "publisher": "emicmrg",
+  "icon": "resources/icon.png",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emicmrg/aws-sso-helper.git"
