@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as os from 'os';
-import { AwsProfileTreeProvider, AwsProfileTreeItem } from './treeProvider';
+import { AwsProfileTreeProvider } from './treeProvider';
 
 /**
  * Triggers standard aws sso login command using VS Code integrated terminal
@@ -101,7 +101,7 @@ export async function registerAddProfileCommand(provider: AwsProfileTreeProvider
         let isNewSession = false;
         let newSessionStartUrl = '';
         let newSessionRegion = '';
-        let newSessionScopes = 'sso:account:access';
+        const newSessionScopes = 'sso:account:access';
 
         if (sessionSelection === 'Add New SSO Session...') {
             isNewSession = true;
