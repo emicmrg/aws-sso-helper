@@ -1,0 +1,116 @@
+{
+  "name": "aws-sso-helper",
+  "displayName": "AWS SSO Helper",
+  "description": "Simplifica el inicio de sesión y la gestión de perfiles de AWS SSO, abriendo shells con AWS_PROFILE inyectado.",
+  "version": "0.1.0",
+  "publisher": "emicmrg",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "aws-sso-helper-explorer",
+          "title": "AWS SSO Helper",
+          "icon": "$(key)"
+        }
+      ]
+    },
+    "views": {
+      "aws-sso-helper-explorer": [
+        {
+          "id": "awsSsoProfiles",
+          "name": "Perfiles de AWS SSO",
+          "type": "tree"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "aws-sso-helper.refresh",
+        "title": "Refrescar Perfiles",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "aws-sso-helper.login",
+        "title": "SSO Login",
+        "icon": "$(sign-in)"
+      },
+      {
+        "command": "aws-sso-helper.openTerminal",
+        "title": "Abrir Terminal con este Perfil",
+        "icon": "$(terminal)"
+      },
+      {
+        "command": "aws-sso-helper.logout",
+        "title": "SSO Logout",
+        "icon": "$(sign-out)"
+      },
+      {
+        "command": "aws-sso-helper.addProfile",
+        "title": "Agregar Nuevo Perfil",
+        "icon": "$(add)"
+      },
+      {
+        "command": "aws-sso-helper.openConfig",
+        "title": "Abrir Archivo de Configuración",
+        "icon": "$(go-to-file)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "aws-sso-helper.refresh",
+          "when": "view == awsSsoProfiles",
+          "group": "navigation@1"
+        },
+        {
+          "command": "aws-sso-helper.addProfile",
+          "when": "view == awsSsoProfiles",
+          "group": "navigation@2"
+        },
+        {
+          "command": "aws-sso-helper.openConfig",
+          "when": "view == awsSsoProfiles",
+          "group": "navigation@3"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "aws-sso-helper.login",
+          "when": "view == awsSsoProfiles && viewItem == awsProfile",
+          "group": "inline@1"
+        },
+        {
+          "command": "aws-sso-helper.openTerminal",
+          "when": "view == awsSsoProfiles && viewItem == awsProfile",
+          "group": "inline@2"
+        },
+        {
+          "command": "aws-sso-helper.logout",
+          "when": "view == awsSsoProfiles && viewItem == awsProfile",
+          "group": "inline@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "package": "vsce package --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^3.2.1",
+    "typescript": "^5.4.5"
+  }
+}
