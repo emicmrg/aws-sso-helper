@@ -53,7 +53,7 @@ To package this extension into a standalone `.vsix` file for distribution or man
 
 ## Contributing
 
-Contributions are welcome. Feel free to open issues or submit pull requests to suggest enhancements, report bugs, or improve the user interface.
+Contributions are welcome. Feel free to open issues or submit pull requests on our [GitHub Repository](https://github.com/emicmrg/aws-sso-helper) to suggest enhancements, report bugs, or improve the user interface.
 
 ---
 
